@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_tome_new_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_value_tome_new_service"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/tome"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+
+    <Button
+        android:id="@+id/btn_value_tome_new_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="teste" />
+
+    <SeekBar
+        android:id="@+id/sb_me_new_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/btn_value_tome_new_service"
+        android:layout_toRightOf="@id/tv_tome_new_service"
+        android:padding="10dp" />
+
+    <ExpandableListView
+        android:id="@+id/lv_charity_new_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sb_me_new_service"></ExpandableListView>
+
+    <Button
+        android:id="@+id/btn_tax_new_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/lv_charity_new_service"
+        android:layout_marginRight="10dp"
+        android:text="teste" />
+
+    <TextView
+        android:id="@+id/tv_tax_new_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/btn_tax_new_service"
+        android:layout_below="@id/lv_charity_new_service"
+        android:layout_marginLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/tax"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+</RelativeLayout>
