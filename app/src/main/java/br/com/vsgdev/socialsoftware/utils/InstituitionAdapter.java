@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import br.com.vsgdev.socialsoftware.models.Institution;
 import br.com.vsgdev.socialsoftware.R;
 
-/**
- * Created by root on 9/17/15.
- */
 public class InstituitionAdapter extends BaseAdapter {
 
     private final Context context;
@@ -45,26 +42,45 @@ public class InstituitionAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView;
-        ItemHolder itemHolder;
+        final ItemHolder itemHolder;
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.seekbar_item, parent, false);
             itemHolder = new ItemHolder();
-
             itemHolder.tvName = (TextView) rowView.findViewById(R.id.tv_institution_item);
             itemHolder.sbValue = (SeekBar) rowView.findViewById(R.id.sb_item);
             itemHolder.btnValue = (Button) rowView.findViewById(R.id.btn_value_item);
-            itemHolder.tvName.setText(objectsList.get(position).getName());
+
             rowView.setTag(itemHolder);
 
         } else {
             rowView = convertView;
             itemHolder = (ItemHolder) rowView.getTag();
         }
-        System.out.println("posicao: " + position);
+        itemHolder.tvName.setText(objectsList.get(position).getName());
+        itemHolder.sbValue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                String value = String.valueOf(progress);
+//                System.out.println(value);
+                itemHolder.btnValue.setText("R$ " + value);
+            }
 
-        System.out.println("size: " + getCount());
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+//        itemHolder.sbValue.setOnSeekBarChangeListener();
+        itemHolder.btnValue.setText("R$ " + itemHolder.sbValue.getProgress());
+//        System.out.println("posicao: " + position + "name: " + objectsList.get(position).getName());
+
         return rowView;
     }
 

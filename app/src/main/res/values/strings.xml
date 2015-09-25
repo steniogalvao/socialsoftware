@@ -12,4 +12,6 @@
     <string name="charity">Charity</string>
     <string name="surname">Surname</string>
     <string name="name">Name</string>
+    <string name="service_value">Service value</string>
+    <string name="minimum_donation">Minimum donation allowed</string>
 </resources>
