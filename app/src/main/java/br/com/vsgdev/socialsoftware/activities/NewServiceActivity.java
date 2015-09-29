@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
@@ -22,7 +23,7 @@ public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarCha
     private SeekBar sbToMe, sbCharity;
     private EditText etServiceValue;
     private Button btnValueToMe, btnValueCharity;
-    private String value;
+    private BigDecimal charityValue;
     private int toMePercentage, charityPercentage;
 
     @Override
@@ -38,23 +39,6 @@ public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarCha
         charityPercentage = 100;
         sbToMe.setProgress(toMePercentage);
         sbCharity.setProgress(charityPercentage);
-        etServiceValue.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
         btnValueToMe.setText("R$ 0");
         btnValueCharity.setText("R$ 0");
         sbToMe.setOnSeekBarChangeListener(this);
@@ -71,13 +55,30 @@ public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarCha
         charities.add(charity);
 
         ListView lvCharities = (ListView) findViewById(R.id.lv_charity_new_service);
-        InstituitionAdapter instituitionAdapter = new InstituitionAdapter(this, institutions);
+        final InstituitionAdapter instituitionAdapter = new InstituitionAdapter(this, institutions);
         lvCharities.setAdapter(instituitionAdapter);
+        etServiceValue.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                BigDecimal value = new BigDecimal(s.toString());
+                BigDecimal charityValue = value.multiply(new BigDecimal(sbCharity.getProgress() / 100));
+                instituitionAdapter.setCharityValue(charityValue);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
         if (sbToMe.isPressed()) {
             if (fromUser)
                 sbCharity.setProgress(100 - progress);

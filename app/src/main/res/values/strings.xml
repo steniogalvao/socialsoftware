@@ -14,4 +14,5 @@
     <string name="name">Name</string>
     <string name="service_value">Service value</string>
     <string name="minimum_donation">Minimum donation allowed</string>
+    <string name="facebook_app_id">778174298975708</string>
 </resources>
