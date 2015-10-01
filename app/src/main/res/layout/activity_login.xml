@@ -8,10 +8,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/iv_logo_login"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/social" />
+
     <EditText
         android:id="@+id/et_login_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/iv_logo_login"
+        android:layout_marginTop="20dp"
         android:hint="@string/user" />
 
     <EditText
@@ -23,27 +32,34 @@
         android:inputType="textPassword" />
 
     <Button
+        android:id="@+id/btn_login_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password_login"
+        android:layout_marginTop="10dp"
+        android:text="@string/login" />
+
+    <Button
+        android:layout_above="@id/btn_facebook_login"
         android:id="@+id/btn_signup_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/et_password_login"
-        android:layout_below="@id/et_password_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/signup" />
 
-    <Button
-        android:id="@+id/btn_login_login"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_password_login"
-        android:text="@string/login" />
+        android:layout_height="wrap_content" />
+
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/btn_facebook_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@id/btn_login_login"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -34,10 +34,11 @@ import java.util.Arrays;
 import br.com.vsgdev.socialsoftware.R;
 
 
-public class LoginActivity extends Activity implements FacebookCallback<LoginResult> {
+public class LoginActivity extends Activity implements FacebookCallback<LoginResult>, View.OnClickListener {
     private LoginButton facebook;
     private String TAG = LoginActivity.class.getName();
     private CallbackManager callbackManager;
+    private Button signUp;
     public static CallbackManager callbackmanager;
 
 
@@ -50,14 +51,17 @@ public class LoginActivity extends Activity implements FacebookCallback<LoginRes
         final AccessToken token =
                 AccessToken.getCurrentAccessToken();
         if (token != null) {
-            startActivity(new Intent(this, GraphApiSampleActivity.class));
-            finish();
+            //todo ir para tela principal
+//            startActivity(new Intent(this, GraphApiSampleActivity.class));
+//            finish();
         }
         callbackManager = CallbackManager.Factory.create();
 
         facebook = (LoginButton) findViewById(R.id.btn_facebook_login);
         facebook.setReadPermissions("public_profile", "email");
         facebook.registerCallback(callbackManager, this);
+        signUp = (Button) findViewById(R.id.btn_signup_login);
+        signUp.setOnClickListener(this);
 
 
     }
@@ -72,6 +76,7 @@ public class LoginActivity extends Activity implements FacebookCallback<LoginRes
     public void onSuccess(LoginResult loginResult) {
         //caso conecte-se com sucesso, coleta o token gerado.
         final AccessToken token = loginResult.getAccessToken();
+        //todo ir para tela principal
         Toast.makeText(this, token.toString(), Toast.LENGTH_LONG).show();
     }
 
@@ -84,6 +89,7 @@ public class LoginActivity extends Activity implements FacebookCallback<LoginRes
     public void onError(FacebookException e) {
         final String errorMsg = e.getMessage();
         Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show();
+        System.out.println(errorMsg);
     }
 
     @Override
@@ -96,5 +102,13 @@ public class LoginActivity extends Activity implements FacebookCallback<LoginRes
     protected void onPause() {
         super.onPause();
         AppEventsLogger.deactivateApp(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (signUp.isPressed()) {
+            Intent newUser = new Intent(this, NewUser.class);
+            startActivity(newUser);
+        }
     }
 }

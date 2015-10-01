@@ -25,7 +25,7 @@ public class GraphApiSampleActivity extends AppCompatActivity {
         //faz uma requisicao assincrona para buscar as infos do user conectado
         new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
-                "/user/profile",
+                "/me",
                 null,
                 HttpMethod.GET,
                 new GraphRequest.Callback() {
@@ -49,23 +49,23 @@ public class GraphApiSampleActivity extends AppCompatActivity {
                 }
         ).executeAsync();
 
-        //friends list
-        new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
-                "/me/friends",
-                null,
-                HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(final GraphResponse response) {
-                        /* handle the result */
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                final JSONArray friendsArray = response.getJSONArray();
-                            }
-                        });
-                    }
-                }
-        ).executeAsync();
+//        //friends list
+//        new GraphRequest(
+//                AccessToken.getCurrentAccessToken(),
+//                "/me/friends",
+//                null,
+//                HttpMethod.GET,
+//                new GraphRequest.Callback() {
+//                    public void onCompleted(final GraphResponse response) {
+//                        /* handle the result */
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                final JSONArray friendsArray = response.getJSONArray();
+//                            }
+//                        });
+//                    }
+//                }
+//        ).executeAsync();
     }
 }
