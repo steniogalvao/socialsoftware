@@ -114,6 +114,9 @@ public class InstituitionAdapter extends BaseAdapter {
                         }
 
                     }
+//                    if(progress/){
+//
+//                    }
                     //Todo: calcular se a mudança é divisivel por todo o array, se for dividir igualmente, se não dividir e somar a diferença ao primeiro indice, se ele não for o alterado
                 }
             }

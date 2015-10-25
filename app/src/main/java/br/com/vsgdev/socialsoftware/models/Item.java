@@ -1,19 +1,25 @@
 package br.com.vsgdev.socialsoftware.models;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * Created by root on 9/22/15.
  */
-public class Item {
+public class Item implements Serializable {
+
+    private static final long serialVersionUID = 1;
+
     private int id;
     private String name;
     private String description;
-    private float value;
+    private BigDecimal value;
     private int quantity;
     private boolean situation;
     private User user;
     private Category category;
 
-    public Item(int id, String name, String description, float value, int quantity, boolean situation, User user, Category category) {
+    public Item(int id, String name, String description, BigDecimal value, int quantity, boolean situation, User user, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -48,11 +54,11 @@ public class Item {
         this.description = description;
     }
 
-    public float getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(float value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 

@@ -19,9 +19,8 @@ import br.com.vsgdev.socialsoftware.models.Institution;
 import br.com.vsgdev.socialsoftware.utils.InstituitionAdapter;
 
 
-public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
+public class NewItem2 extends Activity implements SeekBar.OnSeekBarChangeListener {
     private SeekBar sbToMe, sbCharity;
-    private EditText etServiceValue;
     private Button btnValueToMe, btnValueCharity;
     private BigDecimal charityValue;
     private int toMePercentage, charityPercentage;
@@ -29,12 +28,11 @@ public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarCha
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_service);
-        sbToMe = (SeekBar) findViewById(R.id.sb_me_new_service);
-        btnValueToMe = (Button) findViewById(R.id.btn_value_tome_new_service);
-        sbCharity = (SeekBar) findViewById(R.id.sb_charity_new_service);
-        btnValueCharity = (Button) findViewById(R.id.btn_value_charity_new_service);
-        etServiceValue = (EditText) findViewById(R.id.et_service_value_new_service);
+        setContentView(R.layout.activity_new_item_2);
+        sbToMe = (SeekBar) findViewById(R.id.sb_me_new_item_2);
+        btnValueToMe = (Button) findViewById(R.id.btn_value_tome_new_item_2);
+        sbCharity = (SeekBar) findViewById(R.id.sb_charity_new_item_2);
+        btnValueCharity = (Button) findViewById(R.id.btn_value_charity_new_item_2);
         toMePercentage = 0;
         charityPercentage = 100;
         sbToMe.setProgress(toMePercentage);
@@ -54,27 +52,27 @@ public class NewServiceActivity extends Activity implements SeekBar.OnSeekBarCha
         ArrayList<Charity> charities = new ArrayList<>();
         charities.add(charity);
 
-        ListView lvCharities = (ListView) findViewById(R.id.lv_charity_new_service);
+        ListView lvCharities = (ListView) findViewById(R.id.lv_charity_new_item_2);
         final InstituitionAdapter instituitionAdapter = new InstituitionAdapter(this, institutions);
         lvCharities.setAdapter(instituitionAdapter);
-        etServiceValue.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BigDecimal value = new BigDecimal(s.toString());
-                BigDecimal charityValue = value.multiply(new BigDecimal(sbCharity.getProgress() / 100));
-                instituitionAdapter.setCharityValue(charityValue);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        etServiceValue.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                BigDecimal value = new BigDecimal(s.toString());
+//                BigDecimal charityValue = value.multiply(new BigDecimal(sbCharity.getProgress() / 100));
+//                instituitionAdapter.setCharityValue(charityValue);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
     }
 
     @Override
