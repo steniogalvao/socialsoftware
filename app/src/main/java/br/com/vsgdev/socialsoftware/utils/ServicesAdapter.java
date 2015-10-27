@@ -1,8 +1,6 @@
 package br.com.vsgdev.socialsoftware.utils;
 
-import android.app.Service;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
-import br.com.vsgdev.socialsoftware.models.Institution;
 import br.com.vsgdev.socialsoftware.models.Item;
 
-/**
- * Created by root on 10/5/15.
- */
+
 public class ServicesAdapter extends BaseAdapter {
 
     private final Context context;

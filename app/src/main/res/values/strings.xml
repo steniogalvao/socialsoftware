@@ -9,7 +9,7 @@
     <string name="signup">Sign Up</string>
     <string name="login">Log In</string>
     <string name="tome">To me</string>
-    <string name="tax">tax</string>
+    <string name="tax">Tax</string>
     <string name="charity">Charity</string>
     <string name="surname">Surname</string>
     <string name="name">Name</string>
@@ -36,4 +36,7 @@
     <string name="amount">Amount</string>
     <string name="we_need_some_information_about_your_item">We need some information about your item</string>
     <string name="this_field_is_required">Required field</string>
+    <string name="where_your_money_goes">Where your money goes?</string>
+    <string name="chose_instituitions_to_donate">Chose institutions to donate</string>
+    <string name="you_need_to_chose_at_least_one">You need to chose at least one</string>
 </resources>

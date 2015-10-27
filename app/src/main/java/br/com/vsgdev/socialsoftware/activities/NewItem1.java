@@ -12,9 +12,6 @@ import java.math.BigDecimal;
 import br.com.vsgdev.socialsoftware.R;
 import br.com.vsgdev.socialsoftware.models.Item;
 
-/**
- * Created by root on 23/10/15.
- */
 public class NewItem1 extends Activity implements View.OnClickListener {
 
     private Button next;
@@ -33,6 +30,17 @@ public class NewItem1 extends Activity implements View.OnClickListener {
         value = (EditText) findViewById(R.id.et_value_new_item_1);
         amount = (EditText) findViewById(R.id.et_amount_new_item_1);
 
+        name.setText("Formatação de computadore");
+        description.setText("Seu computador irá ser formatado e o sistema operacional será reinstalado, um pacote basico de softwares está incluso, não fazemos backup e não instalamos programas complexos");
+        value.setText("355");
+        amount.setText("1");
+
+        //TODO: for test only, delete after implementation
+        if (createItem()) {
+            Intent newItem2 = new Intent(this, NewItem2.class);
+            newItem2.putExtra("ITEM", item);
+            startActivity(newItem2);
+        }
     }
 
     @Override
@@ -40,6 +48,7 @@ public class NewItem1 extends Activity implements View.OnClickListener {
         if (next.isPressed()) {
             if (createItem()) {
                 Intent newItem2 = new Intent(this, NewItem2.class);
+                newItem2.putExtra("ITEM", item);
                 startActivity(newItem2);
             }
         }
@@ -52,7 +61,7 @@ public class NewItem1 extends Activity implements View.OnClickListener {
         this.value = checkEmpty(this.value);
         this.amount = checkEmpty(this.amount);
         if (this.name.getError() == null && this.description.getError() == null && this.value.getError() == null && this.amount.getError() == null) {
-            item = new Item(0, this.name.getText().toString(), this.description.getText().toString(), new BigDecimal(this.value.getText().toString()), Integer.valueOf(this.amount.getText().toString()), true, null, null);
+            item = new Item(0, this.name.getText().toString(), this.description.getText().toString(), new BigDecimal(this.value.getText().toString()), Integer.valueOf(this.amount.getText().toString()), true, null, null,null);
             return true;
         } else
             return false;

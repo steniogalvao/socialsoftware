@@ -2,10 +2,8 @@ package br.com.vsgdev.socialsoftware.models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
-/**
- * Created by root on 9/22/15.
- */
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1;
@@ -18,8 +16,9 @@ public class Item implements Serializable {
     private boolean situation;
     private User user;
     private Category category;
+    private ArrayList<Institution> institutions = new ArrayList<>();
 
-    public Item(int id, String name, String description, BigDecimal value, int quantity, boolean situation, User user, Category category) {
+    public Item(int id, String name, String description, BigDecimal value, int quantity, boolean situation, User user, Category category, ArrayList<Institution> institutions) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,6 +27,7 @@ public class Item implements Serializable {
         this.situation = situation;
         this.user = user;
         this.category = category;
+        this.institutions = institutions;
     }
 
     public int getId() {
@@ -92,5 +92,13 @@ public class Item implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public ArrayList<Institution> getInstitutions() {
+        return institutions;
+    }
+
+    public void setInstitutions(ArrayList<Institution> institutions) {
+        this.institutions = institutions;
     }
 }

@@ -2,7 +2,6 @@ package br.com.vsgdev.socialsoftware.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +37,7 @@ public class ServicesFragment extends Fragment implements ListView.OnItemClickLi
 
         //buscar lista de serviços cadastrados
         User user = new User(0, "Stenio", "Galvao", null, null);
-        Item service = new Item(0, "formatacao de computadores é um nome bem longo", "descricao sobre formatacao de computadores bem extensa para saber como vai se comportar se não ouver mais espaço", new BigDecimal(50), 1, true, user, null);
+        Item service = new Item(0, "formatacao de computadores é um nome bem longo", "descricao sobre formatacao de computadores bem extensa para saber como vai se comportar se não ouver mais espaço", new BigDecimal(50), 1, true, user, null, null);
         serviceList.add(service);
         ListView lvService = (ListView) view.findViewById(R.id.lv_services_fragment_services);
         ServicesAdapter servicesAdapter = new ServicesAdapter(view.getContext(), serviceList);

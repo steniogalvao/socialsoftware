@@ -1,113 +1,71 @@
 package br.com.vsgdev.socialsoftware.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
-import br.com.vsgdev.socialsoftware.models.Charity;
 import br.com.vsgdev.socialsoftware.models.Institution;
-import br.com.vsgdev.socialsoftware.utils.InstituitionAdapter;
+import br.com.vsgdev.socialsoftware.models.Item;
+import br.com.vsgdev.socialsoftware.utils.InstituitionChoseAdapter;
 
 
-public class NewItem2 extends Activity implements SeekBar.OnSeekBarChangeListener {
-    private SeekBar sbToMe, sbCharity;
-    private Button btnValueToMe, btnValueCharity;
-    private BigDecimal charityValue;
-    private int toMePercentage, charityPercentage;
+public class NewItem2 extends Activity implements View.OnClickListener {
+
+    private ListView lvInstitutions;
+    private Button next;
+    private InstituitionChoseAdapter instituitionChoseAdapter;
+    private Item item;
+
+    @Override
+    public void onClick(View view) {
+        if (next.isPressed()) {
+            if (instituitionChoseAdapter.getSelected().isEmpty()) {
+                Toast.makeText(this, getString(R.string.you_need_to_chose_at_least_one), Toast.LENGTH_SHORT).show();
+            } else {
+                item.setInstitutions(instituitionChoseAdapter.getSelected());
+                Intent newItem3 = new Intent(this, NewItem3.class);
+                newItem3.putExtra("ITEM", item);
+                startActivity(newItem3);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item_2);
-        sbToMe = (SeekBar) findViewById(R.id.sb_me_new_item_2);
-        btnValueToMe = (Button) findViewById(R.id.btn_value_tome_new_item_2);
-        sbCharity = (SeekBar) findViewById(R.id.sb_charity_new_item_2);
-        btnValueCharity = (Button) findViewById(R.id.btn_value_charity_new_item_2);
-        toMePercentage = 0;
-        charityPercentage = 100;
-        sbToMe.setProgress(toMePercentage);
-        sbCharity.setProgress(charityPercentage);
-        btnValueToMe.setText("R$ 0");
-        btnValueCharity.setText("R$ 0");
-        sbToMe.setOnSeekBarChangeListener(this);
-        sbCharity.setOnSeekBarChangeListener(this);
+        item = (Item) getIntent().getSerializableExtra("ITEM");
         Institution i1 = new Institution(1, "Lar de maria", null, null);
         Institution i2 = new Institution(2, "APIPA", null, null);
-        Institution i3 = new Institution(3, "Teste", null, null);
+        Institution i3 = new Institution(3, "Teste1", null, null);
+        Institution i4 = new Institution(4, "teste2", null, null);
+        Institution i5 = new Institution(5, "teste3", null, null);
+        Institution i6 = new Institution(6, "test54", null, null);
+        Institution i7 = new Institution(7, "La", null, null);
+        Institution i8 = new Institution(8, "teste56", null, null);
+        Institution i9 = new Institution(9, "teste7", null, null);
         ArrayList<Institution> institutions = new ArrayList<>();
         institutions.add(i1);
         institutions.add(i2);
         institutions.add(i3);
-        Charity charity = new Charity(institutions);
-        ArrayList<Charity> charities = new ArrayList<>();
-        charities.add(charity);
+        institutions.add(i4);
+        institutions.add(i5);
+        institutions.add(i6);
+        institutions.add(i7);
+        institutions.add(i8);
+        institutions.add(i9);
 
-        ListView lvCharities = (ListView) findViewById(R.id.lv_charity_new_item_2);
-        final InstituitionAdapter instituitionAdapter = new InstituitionAdapter(this, institutions);
-        lvCharities.setAdapter(instituitionAdapter);
-//        etServiceValue.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                BigDecimal value = new BigDecimal(s.toString());
-//                BigDecimal charityValue = value.multiply(new BigDecimal(sbCharity.getProgress() / 100));
-//                instituitionAdapter.setCharityValue(charityValue);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
+        lvInstitutions = (ListView) findViewById(R.id.lv_institutions_new_item_2);
+        instituitionChoseAdapter = new InstituitionChoseAdapter(this, institutions);
+        lvInstitutions.setAdapter(instituitionChoseAdapter);
+        next = (Button) findViewById(R.id.btn_next_new_item_2);
+        next.setOnClickListener(this);
     }
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (sbToMe.isPressed()) {
-            if (fromUser)
-                sbCharity.setProgress(100 - progress);
-        }
-        if (sbCharity.isPressed()) {
-            if (fromUser)
-                sbToMe.setProgress(100 - progress);
-        }
-        checkSeekBarBlock();
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-    }
-
-    private void checkSeekBarBlock() {
-        if (sbCharity.getProgress() < 30) {
-            Toast.makeText(this, this.getString(R.string.minimum_donation), Toast.LENGTH_SHORT).show();
-            sbCharity.setProgress(30);
-            sbToMe.setProgress(70);
-        }
-    }
-
-    private void refreshValues() {
-
-    }
-
 }

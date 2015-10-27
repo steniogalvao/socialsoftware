@@ -29,110 +29,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/we_need_some_information_about_your_item"
-        android:textSize="22sp" />
-
-
-    <TextView
-        android:id="@+id/tv_tome_new_item_2"
-        style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btn_value_tome_new_item_2"
-        android:layout_below="@id/tv_apresentation_new_item_2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:paddingTop="10dp"
-        android:text="@string/tome"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-
-    <Button
-        android:id="@+id/btn_value_tome_new_item_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/tv_apresentation_new_item_2"
-        android:layout_marginRight="10dp"
-        android:paddingTop="10dp"
-        android:text="teste" />
-
-    <SeekBar
-        android:id="@+id/sb_me_new_item_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_apresentation_new_item_2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/btn_value_tome_new_item_2"
-        android:layout_toRightOf="@id/tv_tome_new_item_2"
-        android:padding="10dp"
-        android:paddingTop="10dp" />
-
-    <TextView
-        android:id="@+id/tv_charity_new_item_2"
-        style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btn_value_charity_new_item_2"
-        android:layout_below="@id/sb_me_new_item_2"
-        android:layout_marginLeft="10dp"
-        android:paddingTop="10dp"
-        android:text="@string/charity"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/btn_value_charity_new_item_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/btn_value_tome_new_item_2"
-        android:layout_marginRight="10dp"
-        android:text="teste" />
-
-    <SeekBar
-        android:id="@+id/sb_charity_new_item_2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sb_me_new_item_2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/btn_value_charity_new_item_2"
-        android:layout_toRightOf="@id/tv_tome_new_item_2"
-        android:padding="10dp" />
-
-    <Button
-        android:id="@+id/btn_tax_new_item_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/v_separator_new_item_2"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:text="teste" />
-
-    <TextView
-        android:id="@+id/tv_tax_new_item_2"
-        style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/v_separator_new_item_2"
-        android:layout_alignBottom="@id/btn_tax_new_item_2"
-        android:layout_marginLeft="10dp"
-        android:paddingTop="10dp"
-        android:text="@string/tax"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:text="@string/chose_instituitions_to_donate"
+        android:textSize="22sp"
+        android:layout_marginBottom="10dp"/>
 
     <ListView
-        android:id="@+id/lv_charity_new_item_2"
+        android:id="@+id/lv_institutions_new_item_2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tv_tax_new_item_2"
-        android:layout_below="@id/sb_charity_new_item_2"
-        android:layout_marginLeft="15dp"
-        android:transcriptMode="normal" />
-
+        android:layout_above="@id/v_separator_new_item_2"
+        android:layout_below="@id/tv_apresentation_new_item_2"
+        android:layout_marginBottom="10dp" />
 
 </RelativeLayout>

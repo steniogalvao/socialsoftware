@@ -1,9 +1,10 @@
 package br.com.vsgdev.socialsoftware.models;
 
-/**
- * Created by root on 9/17/15.
- */
-public class Institution {
+import java.io.Serializable;
+
+
+public class Institution implements Serializable {
+    private static final long serialVersionUID = 1;
     private int id;
     private String name;
     private Adress adress;
