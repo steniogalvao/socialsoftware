@@ -2,7 +2,6 @@ package br.com.vsgdev.socialsoftware.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,18 +35,12 @@ import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
-import br.com.vsgdev.socialsoftware.models.Item;
-import br.com.vsgdev.socialsoftware.models.User;
-import br.com.vsgdev.socialsoftware.utils.PreferencesFragment;
-import br.com.vsgdev.socialsoftware.utils.ServicesAdapter;
 
 /**
  * Created by root on 10/1/15.
@@ -67,7 +59,7 @@ public class Main extends ActionBarActivity {
     private ImageView profilePicture;
     private TextView profileName;
     private Fragment servicesFragment = new ServicesFragment();
-    private Fragment testeFragment = new PreferencesFragment();
+    private Fragment institutionFragment = new InstitutionsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,22 +141,11 @@ public class Main extends ActionBarActivity {
                 useServicesFragment();
                 break;
             case 1:
-                useTesteFragment();
+                useInstitutionFragment();
                 break;
 
         }
-//        Fragment fragment = new PreferencesFragment();
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        fragmentManager.beginTransaction()
-//                .replace(R.id.mainContent, fragment)
-//                .commit();
-
         mDrawerList.setItemChecked(position, true);
-
-//        setTitle(mNavItems.get(position).mTitle);
-
-        // Close the drawer
         mDrawerLayout.closeDrawer(mDrawerPane);
 
     }
@@ -320,10 +301,10 @@ public class Main extends ActionBarActivity {
                 .commit();
     }
 
-    private void useTesteFragment() {
+    private void useInstitutionFragment() {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.mainContent, testeFragment, "TESTE_FRAGMENT").addToBackStack("TESTE_FRAGMENT")
+                .replace(R.id.mainContent, institutionFragment, "INSTITUTION_FRAGMENT").addToBackStack("INSTITUTION_FRAGMENT")
                 .commit();
     }
 }

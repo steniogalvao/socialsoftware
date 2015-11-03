@@ -7,12 +7,14 @@ public class Institution implements Serializable {
     private static final long serialVersionUID = 1;
     private int id;
     private String name;
+    private String description;
     private Adress adress;
     private Account account;
 
-    public Institution(int id, String name, Adress adress, Account account) {
+    public Institution(int id, String name, String description, Adress adress, Account account) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.adress = adress;
         this.account = account;
     }
@@ -31,6 +33,14 @@ public class Institution implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Adress getAdress() {

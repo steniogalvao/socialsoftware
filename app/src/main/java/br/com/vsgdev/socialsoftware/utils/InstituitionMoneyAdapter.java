@@ -79,7 +79,7 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
         itemHolder.sbValue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
+                if (fromUser && itemHolders.size() > 1) {
                     int diference = 0;
                     int currentItemPosition = -1;
                     int rest = 0;
@@ -124,6 +124,8 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
                     System.out.println(">>>PRogress" + progress);
 
                     //Todo: calcular se a mudança é divisivel por todo o array, se for dividir igualmente, se não dividir e somar a diferença ao primeiro indice, se ele não for o alterado
+                } else {
+                    itemHolders.get(0).sbValue.setProgress(100);
                 }
             }
 
@@ -137,9 +139,7 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
 
             }
         });
-//        itemHolder.sbValue.setOnSeekBarChangeListener();
         itemHolder.btnValue.setText("R$ " + calcPercentage(charityValue, new BigDecimal(itemHolder.sbValue.getProgress())));
-//        System.out.println("posicao: " + position + "name: " + objectsList.get(position).getName());
         if (itemHolders.size() > objectsList.size())
             itemHolders.remove(itemHolders.size() - 1);
         return rowView;
@@ -148,13 +148,6 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
     public void setCharityValue(BigDecimal charityValue) {
         this.charityValue = charityValue;
         refreshValues();
-//        for (ItemHolder item : itemHolders) {
-////            BigDecimal b = new BigDecimal(item.sbValue.getProgress()).setScale(2);
-//            BigDecimal auxCharityValue = calcPercentage(charityValue, new BigDecimal(item.sbValue.getProgress()));
-////            BigDecimal auxCharityValue = charityValue.multiply(new BigDecimal(item.sbValue.getProgress()).divide(new BigDecimal(100)));
-//            item.btnValue.setText("R$ " + auxCharityValue.toString());
-//        }
-
     }
 
 

@@ -48,8 +48,7 @@ public class ServicesFragment extends Fragment implements ListView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        System.out.println("posicao:" + position);
-        Fragment fragment = new ItemDetails();
+        Fragment fragment = new ItemDetailsFragment();
         Bundle item = new Bundle();
         item.putSerializable("ITEM", serviceList.get(position));
         fragment.setArguments(item);

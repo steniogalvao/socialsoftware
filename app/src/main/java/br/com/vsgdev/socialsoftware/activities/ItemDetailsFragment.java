@@ -7,19 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import br.com.vsgdev.socialsoftware.R;
 import br.com.vsgdev.socialsoftware.models.Item;
 
-/**
- * Created by root on 10/13/15.
- */
-public class ItemDetails extends Fragment {
+
+public class ItemDetailsFragment extends Fragment {
     private static TextView price, serviceName, serviceDescription, userName;
 
 
-    public ItemDetails() {
+    public ItemDetailsFragment() {
     }
 
     @Override
@@ -36,7 +32,6 @@ public class ItemDetails extends Fragment {
     }
 
     public void setView(Item item) {
-        ItemDetails itemDetails = new ItemDetails();
         price.setText("R$ " + item.getValue().toString());
         serviceName.setText(item.getName());
         serviceDescription.setText(item.getDescription());
