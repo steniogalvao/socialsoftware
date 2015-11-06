@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_top_view_profile"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/iv_picture_view_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/social" />
+
+        <TextView
+            android:id="@+id/tv_name_view_profile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_picture_view_profile"
+            android:text="nome do individuo" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignBottom="@id/iv_picture_view_profile"
+            android:layout_alignTop="@id/iv_picture_view_profile"
+            android:layout_toRightOf="@id/iv_picture_view_profile"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tv_personal_view_profile"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="personal" />
+
+            <TextView
+                android:id="@+id/tv_adress_view_profile"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="adress" />
+
+            <TextView
+                android:id="@+id/tv_account_view_profile"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="account" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/v_separator_view_profile"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/tv_name_view_profile"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_body_view_profile"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_top_view_profile">
+
+    </RelativeLayout>
+</RelativeLayout>

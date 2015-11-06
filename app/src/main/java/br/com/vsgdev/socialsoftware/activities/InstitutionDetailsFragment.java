@@ -23,9 +23,9 @@ public class InstitutionDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_institutions, container, false);
-        name = (TextView) view.findViewById(R.id.tv_service_name_item_details);
-        description = (TextView) view.findViewById(R.id.tv_description_item_details);
+        View view = inflater.inflate(R.layout.institution_detail, container, false);
+        name = (TextView) view.findViewById(R.id.tv_name_institution_details);
+        description = (TextView) view.findViewById(R.id.tv_description_institution_details);
         Bundle itemBundle = getArguments();
         Institution institution = (Institution) itemBundle.getSerializable("INSTITUTION");
         setView(institution);

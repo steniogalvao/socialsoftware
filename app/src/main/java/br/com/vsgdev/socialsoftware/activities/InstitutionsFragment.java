@@ -17,7 +17,7 @@ import br.com.vsgdev.socialsoftware.utils.InstituitionListAdapter;
 
 public class InstitutionsFragment extends Fragment implements ListView.OnItemClickListener {
     private ListView lvInstitutions;
-    private ArrayList<Institution> institutions;
+    private ArrayList<Institution> institutions = new ArrayList<>();
 
     public InstitutionsFragment() {
         // Required empty public constructor
@@ -32,15 +32,16 @@ public class InstitutionsFragment extends Fragment implements ListView.OnItemCli
         getData();
         InstituitionListAdapter instituitionListAdapter = new InstituitionListAdapter(view.getContext(), institutions);
         lvInstitutions.setAdapter(instituitionListAdapter);
+        lvInstitutions.setOnItemClickListener(this);
         return view;
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        Fragment fragment = new ItemDetailsFragment();
+        Fragment fragment = new InstitutionDetailsFragment();
         Bundle institution = new Bundle();
-        institution.putSerializable("Institution", institutions.get(position));
+        institution.putSerializable("INSTITUTION", institutions.get(position));
         fragment.setArguments(institution);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()

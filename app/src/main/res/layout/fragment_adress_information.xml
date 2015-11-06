@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_country_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_country_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/country" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_state_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_state_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/state" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_city_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_city_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/city" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_neighboard_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_neighboard_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/neighboard" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_street_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_street_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/street" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_number_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_number_fragment_adress_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/number" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_item_complement_fragment_adress_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_phone_complement_personal_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/complement" />
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

@@ -14,7 +14,7 @@
         android:src="@drawable/social" />
 
     <TextView
-        android:id="@+id/tv_name_row_fragment_institution"
+        android:id="@+id/tv_name_institution_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/im_picture_institution_details"
@@ -23,10 +23,10 @@
         android:text="@string/pequeno_50" />
 
     <TextView
-        android:id="@+id/tv_description_row_fragment_institution"
+        android:id="@+id/tv_description_institution_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_name_row_fragment_institution"
+        android:layout_below="@id/tv_name_institution_details"
         android:layout_marginTop="10dp"
         android:text="@string/grande_600" />
 

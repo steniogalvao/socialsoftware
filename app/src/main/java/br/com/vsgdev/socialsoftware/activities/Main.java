@@ -42,10 +42,7 @@ import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
 
-/**
- * Created by root on 10/1/15.
- */
-public class Main extends ActionBarActivity {
+public class Main extends ActionBarActivity implements TextView.OnClickListener {
 
     ListView mDrawerList;
     RelativeLayout mDrawerPane;
@@ -57,9 +54,10 @@ public class Main extends ActionBarActivity {
     private String name;
     private URL img_value = null;
     private ImageView profilePicture;
-    private TextView profileName;
+    private TextView profileName, viewProfile;
     private Fragment servicesFragment = new ServicesFragment();
     private Fragment institutionFragment = new InstitutionsFragment();
+    private Fragment viewProfileFragment = new ViewProfileFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +68,8 @@ public class Main extends ActionBarActivity {
         setTitle(null);
         profilePicture = (ImageView) findViewById(R.id.iv_avatar_main);
         profileName = (TextView) findViewById(R.id.tv_user_name_main);
+        viewProfile = (TextView) findViewById(R.id.tv_desc_main);
+        viewProfile.setOnClickListener(this);
         mNavItems.add(new NavItem(getString(R.string.services), getString(R.string.see_and_search_services_registered), R.drawable.social));
         mNavItems.add(new NavItem(getString(R.string.instituitions), getString(R.string.know_partner_institutions), R.drawable.ic_institutions));
         FacebookSdk.sdkInitialize(this.getApplicationContext());
@@ -123,8 +123,12 @@ public class Main extends ActionBarActivity {
                     Intent login = new Intent(this, LoginActivity.class);
                     startActivity(login);
                     finish();
-                } else
+                } else {
+                    Intent login = new Intent(this, LoginActivity.class);
+                    startActivity(login);
+                    finish();
                     Toast.makeText(this, "não esta logado", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
         }
@@ -306,6 +310,21 @@ public class Main extends ActionBarActivity {
         fragmentManager.beginTransaction()
                 .replace(R.id.mainContent, institutionFragment, "INSTITUTION_FRAGMENT").addToBackStack("INSTITUTION_FRAGMENT")
                 .commit();
+    }
+
+    private void useViewProfileFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.mainContent, viewProfileFragment, "VIEW_PROFILE_FRAGMENT").addToBackStack("VIEW_PROFILE_FRAGMENT")
+                .commit();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (viewProfile.isPressed()) {
+            useViewProfileFragment();
+            Toast.makeText(this, "Clicou ein?!?!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

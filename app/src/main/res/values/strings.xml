@@ -13,6 +13,7 @@
     <string name="charity">Charity</string>
     <string name="surname">Surname</string>
     <string name="name">Name</string>
+    <string name="phone">Phone</string>
     <string name="item_value">Service value</string>
     <string name="minimum_donation">Minimum donation allowed</string>
     <string name="facebook_app_id">778174298975708</string>
@@ -21,6 +22,13 @@
     <string name="whats_you_email">What is your e-mail?</string>
     <string name="you_will_need_password">You will need a password.</string>
     <string name="next">Next</string>
+    <string name="neighboard">Neighboard</string>
+    <string name="street">Street</string>
+    <string name="number">Number</string>
+    <string name="complement">Complement</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
     <string name="concentment">Ao se cadastrar na plataforma você aceita os termos de uso do aplicativo e entende que o "termo de uso" tem que ser um link em azul para levar a uma activity com o termo e que aqui tem que ser um texto relativamente grande para poder ocupar um espaço bom e chamar a atenção do usuario</string>
     <string name="dont_worry_we_will_not_send_spam">Don\'t worry, we will not send SPAM</string>
     <string name="term_of_use"> </string>
