@@ -1,8 +1,5 @@
 package br.com.vsgdev.socialsoftware.models;
 
-/**
- * Created by root on 9/22/15.
- */
 public class Sale {
     private int id;
     private User user;

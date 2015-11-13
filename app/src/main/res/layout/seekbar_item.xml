@@ -6,13 +6,15 @@
     <TextView
         style="@style/TextViewStyle"
         android:id="@+id/tv_institution_item"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="@string/tome"
         android:textSize="18sp"
         android:textAlignment="center"
         android:paddingTop="10dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
         android:layout_alignBottom="@+id/btn_value_item"
         android:layout_alignParentTop="true" />
 

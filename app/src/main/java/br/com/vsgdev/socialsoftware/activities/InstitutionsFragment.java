@@ -53,7 +53,7 @@ public class InstitutionsFragment extends Fragment implements ListView.OnItemCli
     private void getData() {
         Institution i1 = new Institution(1, "Lar de maria", getString(R.string.grande_600), null, null);
         Institution i2 = new Institution(2, "APIPA", getString(R.string.grande_600), null, null);
-        Institution i3 = new Institution(3, "Teste1", getString(R.string.grande_600), null, null);
+        Institution i3 = new Institution(3, "Lar da criança", getString(R.string.grande_600), null, null);
         Institution i4 = new Institution(4, "teste2", getString(R.string.grande_600), null, null);
         Institution i5 = new Institution(5, "teste3", getString(R.string.grande_600), null, null);
         Institution i6 = new Institution(6, "test54", getString(R.string.grande_600), null, null);

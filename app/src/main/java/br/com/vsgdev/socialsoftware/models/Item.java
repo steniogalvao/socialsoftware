@@ -1,8 +1,13 @@
 package br.com.vsgdev.socialsoftware.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Item implements Serializable {
 
@@ -17,6 +22,10 @@ public class Item implements Serializable {
     private User user;
     private Category category;
     private ArrayList<Institution> institutions = new ArrayList<>();
+
+
+    public Item() {
+    }
 
     public Item(int id, String name, String description, BigDecimal value, int quantity, boolean situation, User user, Category category, ArrayList<Institution> institutions) {
         this.id = id;
@@ -70,7 +79,7 @@ public class Item implements Serializable {
         this.quantity = quantity;
     }
 
-    public boolean isSituation() {
+    public boolean getSituation() {
         return situation;
     }
 
@@ -100,5 +109,39 @@ public class Item implements Serializable {
 
     public void setInstitutions(ArrayList<Institution> institutions) {
         this.institutions = institutions;
+    }
+
+    public static JSONObject userToJson(final Item item) {
+        final Map<String, String> params = new HashMap<>();
+        params.put("id", String.valueOf(item.getId()));
+        params.put("name", item.getName());
+        params.put("description", item.getDescription());
+        params.put("value", item.getValue().toString());
+        params.put("quantity", String.valueOf(item.getQuantity()));
+        params.put("situation", String.valueOf(item.getSituation()));
+        if (item.getUser() != null)
+            params.put("user", String.valueOf(item.getUser().getId()));
+        if (item.getCategory() != null)
+            params.put("account", String.valueOf(item.getCategory().getId()));
+
+        final JSONObject jsonObject = new JSONObject(params);
+        return jsonObject;
+    }
+
+    public static User JsonToUser(final JSONObject response) {
+        final User user = new User();
+
+        try {
+            user.setId(response.getInt("id"));
+            user.setName(response.getString("name"));
+            user.setSurrname(response.getString("surname"));
+            user.setEmail(response.getString("email"));
+            user.setPhone(response.getString("phone"));
+            user.setAdres(Adress.JsonToAdress(response.getJSONObject("adress")));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 }

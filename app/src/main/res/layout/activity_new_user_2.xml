@@ -22,14 +22,26 @@
         android:text="@string/whats_you_email"
         android:textSize="22sp" />
 
-
-    <EditText
-        android:id="@+id/et_email_new_user_2"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il__email_new_user_2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_what_email_new_user_2"
-        android:layout_marginTop="5dp"
-        android:hint="@string/email" />
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_email_new_user_2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_what_email_new_user_2"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_next_new_user_2"

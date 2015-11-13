@@ -3,29 +3,28 @@ package br.com.vsgdev.socialsoftware.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.regex.Pattern;
-
 import br.com.vsgdev.socialsoftware.R;
+import br.com.vsgdev.socialsoftware.utils.UserLogedSingleton;
+import br.com.vsgdev.socialsoftware.utils.ValidateUtils;
 
-/**
- * Created by root on 9/30/15.
- */
+
 public class NewUser extends Activity implements View.OnClickListener {
 
     private Button next;
+    private EditText name, surname;
     private TextView termOfUse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user_1);
+        name = (EditText) findViewById(R.id.et_name_new_user);
+        surname = (EditText) findViewById(R.id.et_surname_new_user);
         next = (Button) findViewById(R.id.btn_next_new_user_1);
         next.setOnClickListener(this);
 
@@ -34,8 +33,14 @@ public class NewUser extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (next.isPressed()) {
-            Intent next = new Intent(this, NewUser2.class);
-            startActivity(next);
+            name = ValidateUtils.checkEmptyWithErro(name, getApplicationContext(), getString(R.string.this_field_is_required));
+            surname = ValidateUtils.checkEmptyWithErro(surname, getApplicationContext(), getString(R.string.this_field_is_required));
+            if (name.getError() == null && surname.getError() == null) {
+                UserLogedSingleton.getInstance().setName(name.getText().toString());
+                UserLogedSingleton.getInstance().setSurrname(surname.getText().toString());
+                Intent next = new Intent(this, NewUser2.class);
+                startActivity(next);
+            }
         }
     }
 }

@@ -124,7 +124,8 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
                     System.out.println(">>>PRogress" + progress);
 
                     //Todo: calcular se a mudança é divisivel por todo o array, se for dividir igualmente, se não dividir e somar a diferença ao primeiro indice, se ele não for o alterado
-                } else {
+                }
+                if (itemHolders.size() == 1) {
                     itemHolders.get(0).sbValue.setProgress(100);
                 }
             }
@@ -181,7 +182,8 @@ public class InstituitionMoneyAdapter extends BaseAdapter {
 
     private void refreshValues() {
         for (ItemHolder itemHolder : itemHolders) {
-            itemHolder.btnValue.setText("R$ " + calcPercentage(charityValue, new BigDecimal(itemHolder.sbValue.getProgress())));
+            String aux = "R$ " + calcPercentage(charityValue, new BigDecimal(itemHolder.sbValue.getProgress()));
+            itemHolder.btnValue.setText(aux);
         }
     }
 }

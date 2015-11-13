@@ -22,14 +22,23 @@
         android:text="@string/you_will_need_password"
         android:textSize="22sp" />
 
-    <EditText
-        android:id="@+id/et_email_new_user_3"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/il_surname_new_user"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_what_email_new_user_3"
-        android:layout_marginTop="5dp"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_email_new_user_3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         android:id="@+id/btn_next_new_user_3"

@@ -20,6 +20,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_picture_view_profile"
+            android:ellipsize="end"
             android:text="nome do individuo" />
 
 
@@ -35,7 +36,6 @@
 
             <TextView
                 android:id="@+id/tv_personal_view_profile"
-                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginRight="5dp"
@@ -46,7 +46,6 @@
 
             <TextView
                 android:id="@+id/tv_adress_view_profile"
-                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginRight="5dp"
@@ -57,7 +56,6 @@
 
             <TextView
                 android:id="@+id/tv_account_view_profile"
-                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"

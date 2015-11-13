@@ -26,13 +26,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.HttpMethod;
 import com.facebook.login.LoginManager;
 
 import org.json.JSONObject;
@@ -41,6 +39,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import br.com.vsgdev.socialsoftware.R;
+import br.com.vsgdev.socialsoftware.utils.UserLogedSingleton;
 
 public class Main extends ActionBarActivity implements TextView.OnClickListener {
 
@@ -51,13 +50,14 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
     private static String TAG = Main.class.getSimpleName();
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
     private String profileId;
-    private String name;
+    private String name, surname, email;
     private URL img_value = null;
     private ImageView profilePicture;
     private TextView profileName, viewProfile;
     private Fragment servicesFragment = new ServicesFragment();
     private Fragment institutionFragment = new InstitutionsFragment();
     private Fragment viewProfileFragment = new ViewProfileFragment();
+    private RelativeLayout profileArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +66,8 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitle(null);
+        profileArea = (RelativeLayout) findViewById(R.id.profileBox);
+        profileArea.setOnClickListener(this);
         profilePicture = (ImageView) findViewById(R.id.iv_avatar_main);
         profileName = (TextView) findViewById(R.id.tv_user_name_main);
         viewProfile = (TextView) findViewById(R.id.tv_desc_main);
@@ -90,7 +92,8 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
 
         };
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);// Populate the Navigtion Drawer with options
+        mDrawerLayout.setDrawerListener(mDrawerToggle);// Populate th
+        // e Navigtion Drawer with options
         mDrawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
         mDrawerList = (ListView) findViewById(R.id.navList);
         DrawerListAdapter adapter = new DrawerListAdapter(this, mNavItems);
@@ -124,10 +127,10 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
                     startActivity(login);
                     finish();
                 } else {
+
                     Intent login = new Intent(this, LoginActivity.class);
                     startActivity(login);
                     finish();
-                    Toast.makeText(this, "não esta logado", Toast.LENGTH_SHORT).show();
                 }
                 break;
 
@@ -229,34 +232,71 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
     }
 
     private void populateProfile() {
-        new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
-                "/me",
-                null,
-                HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(final GraphResponse response) {
-                        /* handle the result */
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                JSONObject jResponse = response.getJSONObject();
-                                try {
-                                    profileId = jResponse.get("id").toString();
-                                    name = jResponse.get("name").toString();
-                                    profileName.setText(name);
-                                    // a linha abaixo da exception pq n pode usar a thread principal
-                                    HTTPExample getPicture = new HTTPExample();
-                                    getPicture.execute(new String[]{"https://graph.facebook.com/" + profileId + "/picture?type=large"});
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+        final AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (accessToken != null) {
+            GraphRequest request = GraphRequest.newMeRequest(
+                    accessToken,
+                    new GraphRequest.GraphJSONObjectCallback() {
+                        @Override
+                        public void onCompleted(
+                                JSONObject object,
+                                GraphResponse response) {
+                            JSONObject jResponse = response.getJSONObject();
+                            try {
+                                profileId = jResponse.get("id").toString();
+                                UserLogedSingleton.getInstance().setName(jResponse.get("first_name").toString());
+                                UserLogedSingleton.getInstance().setSurrname(jResponse.get("last_name").toString());
+                                UserLogedSingleton.getInstance().setEmail(jResponse.get("email").toString());
+                                // a linha abaixo da exception pq n pode usar a thread principal
+                                HTTPExample getPicture = new HTTPExample();
+                                getPicture.execute(new String[]{"https://graph.facebook.com/" + profileId + "/picture?type=large"});
+                                refreshProfileInformations();
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        });
-                    }
-                }
-        ).executeAsync();
+
+
+                        }
+                    });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "id,first_name,last_name,link,email");
+            request.setParameters(parameters);
+            request.executeAsync();
+//            new GraphRequest(
+//                    AccessToken.getCurrentAccessToken(),
+//                    "/me",
+//                    null,
+//                    HttpMethod.GET,
+//                    new GraphRequest.Callback() {
+//                        public void onCompleted(final GraphResponse response) {
+//                        /* handle the result */
+//
+//                            runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    JSONObject jResponse = response.getJSONObject();
+//                                    try {
+//                                        profileId = jResponse.get("id").toString();
+//                                        jResponse.get("name").toString();
+//                                        UserLogedSingleton.getInstance().setName(jResponse.get("first_name").toString());
+//                                        UserLogedSingleton.getInstance().setSurrname(jResponse.get("last_name").toString());
+//                                        UserLogedSingleton.getInstance().setEmail(jResponse.get("email").toString());
+//                                        // a linha abaixo da exception pq n pode usar a thread principal
+//                                        HTTPExample getPicture = new HTTPExample();
+//                                        getPicture.execute(new String[]{"https://graph.facebook.com/" + profileId + "/picture?type=large"});
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }
+//            ).executeAsync();
+        } else {
+            name = UserLogedSingleton.getInstance().getName();
+            surname = UserLogedSingleton.getInstance().getSurrname();
+            email = UserLogedSingleton.getInstance().getEmail();
+        }
     }
 
     private class HTTPExample extends AsyncTask<String, Void, Bitmap> {
@@ -321,10 +361,13 @@ public class Main extends ActionBarActivity implements TextView.OnClickListener 
 
     @Override
     public void onClick(View view) {
-        if (viewProfile.isPressed()) {
+        if (viewProfile.isPressed() || profileName.isPressed() || profileArea.isPressed()) {
             useViewProfileFragment();
-            Toast.makeText(this, "Clicou ein?!?!", Toast.LENGTH_SHORT).show();
+            mDrawerLayout.closeDrawer(mDrawerPane);
         }
+    }
+    private void refreshProfileInformations(){
+        profileName.setText(UserLogedSingleton.getInstance().getName() + " " + UserLogedSingleton.getInstance().getSurrname());
     }
 }
 
