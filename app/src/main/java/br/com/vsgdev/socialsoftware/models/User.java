@@ -16,21 +16,23 @@ public class User implements Serializable {
     private String name;
     private String surrname;
     private String email;
+    private String password;
     private String phone;
-    private Adress adress;
+    private Address address;
     private Account account;
 
     public User() {
 
     }
 
-    public User(int id, String name, String surrname, String email, String phone, Adress adress, Account account) {
+    public User(int id, String name, String surrname, String email, String password, String phone, Address address, Account account) {
         this.id = id;
         this.name = name;
         this.surrname = surrname;
         this.email = email;
+        this.password = password;
         this.phone = phone;
-        this.adress = adress;
+        this.address = address;
         this.account = account;
     }
 
@@ -66,6 +68,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -74,12 +84,12 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdres(Adress adres) {
-        this.adress = adres;
+    public void setAdres(Address adres) {
+        this.address = adres;
     }
 
     public Account getAccount() {
@@ -97,9 +107,10 @@ public class User implements Serializable {
         params.put("name", user.getName());
         params.put("surname", user.getSurrname());
         params.put("email", user.getEmail());
+        params.put("password", user.getPassword());
         params.put("phone", user.getPhone());
-        if (user.getAdress() != null)
-            params.put("address", Adress.AdressToJson(user.getAdress()));
+        if (user.getAddress() != null)
+            params.put("address", Address.AdressToJson(user.getAddress()));
 //        if (user.getAccount() != null)
 //            params.put("account", String.valueOf(user.getAccount().getId()));
 //        params.put("deviceId", user.getDeviceId());
@@ -119,8 +130,9 @@ public class User implements Serializable {
             user.setName(response.getString("name"));
             user.setSurrname(response.getString("surname"));
             user.setEmail(response.getString("email"));
+            user.setPassword(response.getString("password"));
             user.setPhone(response.getString("phone"));
-            user.setAdres(Adress.JsonToAdress(response.getJSONObject("address")));
+            user.setAdres(Address.JsonToAdress(response.getJSONObject("address")));
 //            user.setAccount(response.getString("account"));
         } catch (JSONException e) {
             e.printStackTrace();

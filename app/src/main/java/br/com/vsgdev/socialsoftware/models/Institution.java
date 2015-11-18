@@ -13,17 +13,17 @@ public class Institution implements Serializable {
     private int id;
     private String name;
     private String description;
-    private Adress adress;
+    private Address address;
     private Account account;
 
     public Institution() {
     }
 
-    public Institution(int id, String name, String description, Adress adress, Account account) {
+    public Institution(int id, String name, String description, Address address, Account account) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.adress = adress;
+        this.address = address;
         this.account = account;
     }
 
@@ -51,12 +51,12 @@ public class Institution implements Serializable {
         this.description = description;
     }
 
-    public Adress getAdress() {
-        return adress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAdress(Adress adress) {
-        this.adress = adress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Account getAccount() {
@@ -67,16 +67,16 @@ public class Institution implements Serializable {
         this.account = account;
     }
 
-    public static JSONObject userToJson(final Institution institution) {
-        final Map<String, String> params = new HashMap<>();
+    public static JSONObject institutionToJson(final Institution institution) {
+        final Map<String, Object> params = new HashMap<>();
 
         params.put("id", String.valueOf(institution.getId()));
         params.put("name", institution.getName());
         params.put("description", institution.getDescription());
-        if (institution.getAdress() != null)
-            params.put("adress", String.valueOf(institution.getAdress().getId()));
-        if (institution.getAccount() != null)
-            params.put("account", String.valueOf(institution.getAccount().getId()));
+        if (institution.getAddress() != null)
+            params.put("address", Address.AdressToJson(institution.getAddress()));
+//        if (institution.getAccount() != null)
+//            params.put("account", );
 
         final JSONObject jsonObject = new JSONObject(params);
         return jsonObject;
@@ -89,7 +89,7 @@ public class Institution implements Serializable {
             institution.setId(response.getInt("id"));
             institution.setName(response.getString("name"));
             institution.setDescription(response.getString("description"));
-//            user.setAdres(response.getString("adress"));
+            institution.setAddress(Address.JsonToAdress(response.getJSONObject("address")));
 //            user.setAccount(response.getString("account"));
         } catch (JSONException e) {
             e.printStackTrace();

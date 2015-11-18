@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Adress implements Serializable {
+public class Address implements Serializable {
     private static final long serialVersionUID = 1;
 
     private int id;
@@ -19,10 +19,10 @@ public class Adress implements Serializable {
     private String number;
     private String complement;
 
-    public Adress() {
+    public Address() {
     }
 
-    public Adress(int id, String country, String state, String city, String neighboard, String street, String number, String complement) {
+    public Address(int id, String country, String state, String city, String neighboard, String street, String number, String complement) {
         this.id = id;
         this.country = country;
         this.state = state;
@@ -98,17 +98,17 @@ public class Adress implements Serializable {
     }
 
 
-    public static JSONObject AdressToJson(final Adress adress) {
+    public static JSONObject AdressToJson(final Address address) {
         final Map<String, String> params = new HashMap<>();
 
-        params.put("id", String.valueOf(adress.getId()));
-        params.put("country", adress.getCountry());
-        params.put("state", adress.getState());
-        params.put("city", adress.getCity());
-        params.put("neighboar", adress.getNeighboard());
-        params.put("street", adress.getStreet());
-        params.put("number", adress.getNumber());
-        params.put("complement", adress.getComplement());
+        params.put("id", String.valueOf(address.getId()));
+        params.put("country", address.getCountry());
+        params.put("state", address.getState());
+        params.put("city", address.getCity());
+        params.put("neighboar", address.getNeighboard());
+        params.put("street", address.getStreet());
+        params.put("number", address.getNumber());
+        params.put("complement", address.getComplement());
 //        params.put("deviceId", user.getDeviceId());
 //        params.put("gcmToken", user.getGcmToken());
 
@@ -116,22 +116,22 @@ public class Adress implements Serializable {
         return jsonObject;
     }
 
-    public static Adress JsonToAdress(final JSONObject response) {
-        final Adress adress = new Adress();
+    public static Address JsonToAdress(final JSONObject response) {
+        final Address address = new Address();
 
         try {
-            adress.setId(response.getInt("id"));
-            adress.setCountry(response.getString("country"));
-            adress.setState(response.getString("state"));
-            adress.setCity(response.getString("city"));
-            adress.setNeighboard(response.getString("neighboard"));
-            adress.setStreet(response.getString("street"));
-            adress.setNumber(response.getString("number"));
-            adress.setComplement(response.getString("complement"));
+            address.setId(response.getInt("id"));
+            address.setCountry(response.getString("country"));
+            address.setState(response.getString("state"));
+            address.setCity(response.getString("city"));
+            address.setNeighboard(response.getString("neighboard"));
+            address.setStreet(response.getString("street"));
+            address.setNumber(response.getString("number"));
+            address.setComplement(response.getString("complement"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return adress;
+        return address;
     }
 }

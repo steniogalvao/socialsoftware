@@ -30,11 +30,17 @@ public class NewItem1 extends Activity implements View.OnClickListener {
         description = (EditText) findViewById(R.id.et_description_new_item_1);
         value = (EditText) findViewById(R.id.et_value_new_item_1);
         amount = (EditText) findViewById(R.id.et_amount_new_item_1);
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            Item item = (Item) bundle.getSerializable("ITEM");
+            if (item != null) {
+                name.setText(item.getName());
+                description.setText(item.getDescription());
+                value.setText(item.getValue().toString());
+                amount.setText(String.valueOf(item.getQuantity()));
+            }
+        }
 
-        name.setText("Formatação de computadore");
-        description.setText("Seu computador irá ser formatado e o sistema operacional será reinstalado, um pacote basico de softwares está incluso, não fazemos backup e não instalamos programas complexos");
-        value.setText("355");
-        amount.setText("1");
 
         //TODO: for test only, delete after implementation
 //        if (createItem()) {

@@ -48,20 +48,17 @@ public class Category {
         this.description = description;
     }
 
-    public static JSONObject AdressToJson(final Category category) {
+    public static JSONObject CategoryToJson(final Category category) {
         final Map<String, String> params = new HashMap<>();
 
         params.put("id", String.valueOf(category.getId()));
         params.put("name", category.getName());
         params.put("description", category.getDescription());
-//        params.put("deviceId", user.getDeviceId());
-//        params.put("gcmToken", user.getGcmToken());
-
         final JSONObject jsonObject = new JSONObject(params);
         return jsonObject;
     }
 
-    public static Category JsonToAdress(final JSONObject response) {
+    public static Category JsonToCategory(final JSONObject response) {
         final Category category = new Category();
 
         try {

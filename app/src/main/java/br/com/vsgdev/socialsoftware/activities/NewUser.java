@@ -3,7 +3,9 @@ package br.com.vsgdev.socialsoftware.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +29,6 @@ public class NewUser extends Activity implements View.OnClickListener {
         surname = (EditText) findViewById(R.id.et_surname_new_user);
         next = (Button) findViewById(R.id.btn_next_new_user_1);
         next.setOnClickListener(this);
-
     }
 
     @Override

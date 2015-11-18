@@ -1,9 +1,12 @@
 package br.com.vsgdev.socialsoftware.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -196,5 +199,25 @@ public class LoginActivity extends Activity implements FacebookCallback<LoginRes
         Intent main = new Intent(this, Main.class);
         startActivity(main);
         finish();
+    }
+
+    public static class LoginHandler extends Handler {
+        private Boolean valido;
+        private Context context;
+
+        public LoginHandler(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
+            valido = bundle.getBoolean("loged");
+            if (valido) {
+//                Intent newUser3 = new Intent(context, NewUser3.class);
+//                context.startActivity(newUser3);
+            }
+        }
+
     }
 }

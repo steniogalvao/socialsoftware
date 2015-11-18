@@ -34,7 +34,7 @@ public class NewUser2 extends Activity implements View.OnClickListener {
         if (next.isPressed()) {
             email = ValidateUtils.checkEmptyWithErro(email, getApplicationContext(), getString(R.string.this_field_is_required));
             if (email.getError() == null) {
-                WebServiceUtils.validFake(new EmailHandler(this));
+                WebServiceUtils.validateEmail(email.getText().toString(),this, new EmailHandler(this));
             }
         }
     }

@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_fragment_service"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_new_item_fragment_servives"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="@dimen/fab_button_margin_bottom"
-        android:layout_marginRight="@dimen/fab_button_margin_right"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="25dp"
         android:src="@mipmap/fab_ic_add"
-        app:borderWidth="0dp"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp" />
+        app:layout_anchor="@id/layout_fragment_service"
+        app:layout_anchorGravity="bottom|right" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_my_items_fragment_servives"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/edit"
+        app:layout_anchor="@id/fab_new_item_fragment_servives"
+        app:layout_anchorGravity="top|right|bottom" />
 
 
     <ListView
@@ -25,4 +36,5 @@
 
     </ListView>
 
-</RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

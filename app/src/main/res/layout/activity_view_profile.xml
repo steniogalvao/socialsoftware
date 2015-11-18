@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:gravity="center"
-                android:text="adress" />
+                android:text="address" />
 
             <TextView
                 android:id="@+id/tv_account_view_profile"

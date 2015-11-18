@@ -35,7 +35,7 @@ public class UserLogedSingleton {
      */
     private static synchronized void inicializaInstancia() {
         if (instance == null) {
-            instance = new User(0, "", "", "", null, null, null);
+            instance = new User();
         }
     }
 

@@ -111,8 +111,8 @@ public class Item implements Serializable {
         this.institutions = institutions;
     }
 
-    public static JSONObject userToJson(final Item item) {
-        final Map<String, String> params = new HashMap<>();
+    public static JSONObject itemToJson(final Item item) {
+        final Map<String, Object> params = new HashMap<>();
         params.put("id", String.valueOf(item.getId()));
         params.put("name", item.getName());
         params.put("description", item.getDescription());
@@ -120,28 +120,30 @@ public class Item implements Serializable {
         params.put("quantity", String.valueOf(item.getQuantity()));
         params.put("situation", String.valueOf(item.getSituation()));
         if (item.getUser() != null)
-            params.put("user", String.valueOf(item.getUser().getId()));
+            params.put("user", User.userToJson(item.getUser()));
         if (item.getCategory() != null)
-            params.put("account", String.valueOf(item.getCategory().getId()));
+            params.put("category", Category.CategoryToJson(item.getCategory()));
 
         final JSONObject jsonObject = new JSONObject(params);
         return jsonObject;
     }
 
-    public static User JsonToUser(final JSONObject response) {
-        final User user = new User();
+    public static Item JsonToItem(final JSONObject response) {
+        final Item item = new Item();
 
         try {
-            user.setId(response.getInt("id"));
-            user.setName(response.getString("name"));
-            user.setSurrname(response.getString("surname"));
-            user.setEmail(response.getString("email"));
-            user.setPhone(response.getString("phone"));
-            user.setAdres(Adress.JsonToAdress(response.getJSONObject("adress")));
+            item.setId(response.getInt("id"));
+            item.setName(response.getString("name"));
+            item.setDescription(response.getString("description"));
+            item.setValue(new BigDecimal(response.getString("value")));
+            item.setQuantity(response.getInt("quantity"));
+            item.setSituation(response.getBoolean("situation"));
+            item.setCategory(Category.JsonToCategory(response.getJSONObject("category")));
+//            item.setInstitutions();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return user;
+        return item;
     }
 }
